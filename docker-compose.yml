@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  language-pack-default:
+    image: image
+    build: .
+    environment:
+      PASSWORD: s3cret
+    deploy:
+      resources:
+        reservations:
+          cpus: "100m"
+          memory: "256Mi"
+        limits:
+          cpus: "100m"
+          memory: "256Mi"
+    command:
+      - --port
+      - "4395"
+    ports:
+      - 4395:4395
+      - 8080:8080
+      - 4200:4200
