@@ -2,7 +2,7 @@ version: '3.3'
 services:
   language-pack-default:
     image: image
-    build: .
+    build: default
     environment:
       PASSWORD: s3cret
     deploy:
