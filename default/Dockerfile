@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.1.0
+FROM codercom/code-server:3.1.1
 
 ## Setup Java 8 Development Environment
 # RUN sudo apt update \

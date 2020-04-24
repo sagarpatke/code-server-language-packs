@@ -1,5 +1,7 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'asia.gcr.io/mashup-dev-project-267408/language-pack-default', '.' ]
-images:
-  - 'asia.gcr.io/mashup-dev-project-267408/language-pack-default'
+  - name: gcr.io/kaniko-project/executor:latest
+    args:
+      - --destination=asia.gcr.io/$PROJECT_ID/code-server:v3.1.1
+      - --cache
+      - --cache-ttl=168h
+      - --context=default
