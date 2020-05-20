@@ -1,25 +1,16 @@
-FROM codercom/code-server:3.1.1
-
-## Setup Java 8 Development Environment
-# RUN sudo apt update \
-#   && sudo apt install -y openjdk-8-jdk maven \
-#   && sudo apt-get clean
+FROM codercom/code-server:3.3.1
 
 RUN sudo apt update \
   && sudo apt -y upgrade \
-  && sudo apt install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common \
-  && wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - \
-  && sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
-  && sudo apt update \
-  && sudo apt -y install adoptopenjdk-8-hotspot \
+  && sudo apt install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common openjdk-11-jdk maven \
   && sudo apt-get clean
 
-## Setup NodeJS 8 Development Environment
+## Setup NodeJS 12 Development Environment
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
 ## Setup Angular
-RUN sudo npm install -g @angular/cli
+RUN sudo npm install -g @angular/cli@8
 
 RUN code-server \
   --install-extension redhat.java \
