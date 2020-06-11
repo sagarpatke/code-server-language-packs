@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.3.1
+FROM codercom/code-server:3.4.1
 
 RUN sudo apt update \
   && sudo apt -y upgrade \
@@ -26,3 +26,7 @@ RUN code-server \
   --install-extension xabikos.JavaScriptSnippets \
   --install-extension jasonnutter.search-node-modules \
   --install-extension christian-kohler.path-intellisense
+
+RUN mkdir .ext
+COPY codetour-0.0.32.vsix .ext
+RUN code-server --install-extension .ext/codetour-0.0.32.vsix
